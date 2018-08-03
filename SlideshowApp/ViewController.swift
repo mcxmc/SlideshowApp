@@ -38,14 +38,12 @@ class ViewController: UIViewController {
     
     @IBAction func playOrPause(_ sender: Any) {
         if timer != nil {
-            isPlay = false
             nextButton.isEnabled = true
             backButton.isEnabled = true
             playButton.setTitle("再生", for: .normal)
             self.timer?.invalidate()
             self.timer = nil
         } else {
-            isPlay = true
             nextButton.isEnabled = false
             backButton.isEnabled = false
             playButton.setTitle("停止", for: .normal)
@@ -95,18 +93,11 @@ class ViewController: UIViewController {
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
         if timer != nil {
-            isPlay = false
             nextButton.isEnabled = true
             backButton.isEnabled = true
             playButton.setTitle("再生", for: .normal)
             self.timer?.invalidate()
             self.timer = nil
-        } else {
-            isPlay = true
-            nextButton.isEnabled = false
-            backButton.isEnabled = false
-            playButton.setTitle("停止", for: .normal)
-            self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         }
     }
 
